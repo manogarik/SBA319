@@ -50,7 +50,7 @@ async function createPassenger(req, res) {
 async function deletePassenger(req, res) {
     try {
         await Passenger.findByIdAndDelete(req.params.id);
-        res.send("Deleted the flight");
+        res.send("Deleted the Passenger");
     } catch (error) {
         console.error(error);
     }
