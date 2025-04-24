@@ -49,8 +49,8 @@ async function createPassenger(req, res) {
 
 async function deletePassenger(req, res) {
     try {
-        await Passenger.findByIdAndDelete(req.params.id)
-        res.redirect('/passengers')//redirect back to fruits index
+        await Passenger.findByIdAndDelete(req.params.id);
+        res.redirect('/passengers');//redirect back to fruits index
     } catch (error) {
         console.error(error);
     }
