@@ -57,7 +57,7 @@ async function deleteFlight(req,res)
 {
     try {
               await Flight.findByIdAndDelete(req.params.id)
-              res.redirect('/flights')//redirect back to fruits index
+              res.send('Deleted the selected flight')//redirect back to fruits index
           } catch(error) {
               console.error(error);
             }
