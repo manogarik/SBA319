@@ -6,6 +6,7 @@ A simple flight management system built with **Express.js**, **MongoDB**, and **
 
 - RESTful API for Flights, Passengers, and Bookings
 - MongoDB integration using Mongoose
+- MongoDB validation rules have been applied to prevent entering invalid data.
 - Data validation and custom schema rules
 - Modular route structure
 - Environment-based configuration
@@ -27,10 +28,7 @@ A simple flight management system built with **Express.js**, **MongoDB**, and **
 
 * How to run the program
 * nodemon index.mjs
-  
-```
-code blocks for commands
-```
+
 
 
 ## Authors
@@ -40,13 +38,6 @@ Contributors names and contact info
 ex. Manogari Kumaraguru
 ex. manogarikumaraguru@gmail.com
 
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
 
 
 
