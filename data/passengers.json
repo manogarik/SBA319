@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Manogari",
+        "email": "manoguru768@gmail.com",
+        "passportNumber": "T6334454",
+        "nationality": "India"
+        
+    },
+    
+    {
+            "name": "Sivakami",
+            "email": "sivagamikmr@gmail.com",
+            "passportNumber": "X1234567",
+            "nationality": "India"
+            
+    },
+    
+        {
+            "name": "Sashtika",
+            "email": "sashtika@gmail.com",
+            "passportNumber": "X1212227",
+            "nationality": "USA"
+            
+    }
+    
+
+    
+]
