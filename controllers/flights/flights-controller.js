@@ -82,6 +82,15 @@ async function deleteFlight(req,res)
          }
  }
 
+ async function showFlight(req,res)
+ {
+        try{
+            const flight = await Flight.findById(req.params.id)
+            res.json(flight)
+        } catch(err) {
+            console.log(err)
+        }
+ }
 
 
 // async function renderNewForm(req, res) {
@@ -97,5 +106,6 @@ export {
     getFlights,
     createFlight,
     deleteFlight,
-    updateFlight
+    updateFlight,
+    showFlight
 };

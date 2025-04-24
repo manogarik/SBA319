@@ -27,5 +27,6 @@ router.patch('/:id', flightsController.updateFlight);
 router.post('/', flightsController.createFlight);
 // Edit
 // Show
+router.get('/:id',flightsController.showFlight);
 
 export default router;
