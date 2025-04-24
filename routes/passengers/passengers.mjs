@@ -27,5 +27,6 @@ router.patch('/:id', passengerController.updatePassenger);
 router.post('/', passengerController.createPassenger);
 // Edit
 // Show
+router.get('/:id',passengerController.showPassenger);
 
 export default router;

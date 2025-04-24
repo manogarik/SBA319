@@ -74,6 +74,16 @@ async function updatePassenger(req, res) {
     }
 }
 
+//Show Passenger by id
+ async function showPassenger(req,res)
+ {
+        try{
+            const passenger = await Passenger.findById(req.params.id)
+            res.json(passenger)
+        } catch(err) {
+            console.log(err)
+        }
+ }
 
 
 // async function renderNewForm(req, res) {
@@ -89,5 +99,6 @@ export {
     getPassengers,
     createPassenger,
     deletePassenger,
-    updatePassenger
+    updatePassenger,
+    showPassenger
 };
