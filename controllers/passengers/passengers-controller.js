@@ -1,86 +1,78 @@
-import Flight from '../../models/passengers.mjs';
+import Passenger from '../../models/passengers.mjs';
 
 
-async function seedFlights(req, res) {
+async function seedPassengers(req, res) {
     try {
-        await Flight.deleteMany({});
-        await Flight.create(
+        await Passenger.deleteMany({});
+        await Passenger.create(
             {
-                flightNumber: "AI202",
-                airline: "Air India",
-                origin: "DEL",
-                destination: "JFK",
-                departureTime: "2025-06-24T09:00:00Z",
-                arrivalTime: "2025-06-24T18:00:00Z",
-                duration: "15h",
-                status: "On Time"
+
+                name: "Manogari",
+                email: "manoguru768@gmail.com",
+                passportNumber: "T6334454",
+                nationality: "India"
+
             },
             {
-                flightNumber: "F92101",
-                airline: "Frontier",
-                origin: "RDU",
-                destination: "LAS",
-                departureTime: "2025-08-09T07:30:00Z",
-                arrivalTime: "2025-08-09T09:17:00Z",
-                duration: "4h 47min",
-                status: "On Time"
+                name: "Sivakami",
+                email: "sivagamikmr@gmail.com",
+                passportNumber: "X1234567",
+                nationality: "India"
             },
-            
+
         );
-        res.status(201).redirect('/flights');
+        res.status(201).redirect('/passengers');
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-async function getFlights(req, res) {
+async function getPassengers(req, res) {
     try {
-        const fruits = await Flight.find({});
-        res.status(200).json(fruits);
+        const passengers = await Passenger.find({});
+        res.status(200).json(passengers);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-async function createFlight(req, res) {
+async function createPassenger(req, res) {
     try {
         req.body.readyToEat === 'on' ? req.body.readyToEat = true : req.body.readyToEat = false;
-        const flight = await Flight.create(req.body);
-        console.log(flight);
-        res.status(201).json(flight);
+        const passenger = await Passenger.create(req.body);
+        console.log(passenger);
+        res.status(201).json(passenger);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-async function deleteFlight(req,res)
-{
+async function deletePassenger(req, res) {
     try {
-              await Flight.findByIdAndDelete(req.params.id)
-              res.redirect('/flights')//redirect back to fruits index
-          } catch(error) {
-              console.error(error);
-            }
- }
+        await Passenger.findByIdAndDelete(req.params.id)
+        res.redirect('/passengers')//redirect back to fruits index
+    } catch (error) {
+        console.error(error);
+    }
+}
 
- async function updateFlight(req,res)
- {
+async function updatePassenger(req, res) {
     try {
-           if (req.body.readyToEat === "on") {
-             //if checked, req.body.readyToEat is set to 'on'
-             req.body.readyToEat = true; //do some data correction
-           } else {
-             //if not checked, req.body.readyToEat is undefined
-             req.body.readyToEat = false; //do some data correction
-           }
-           // fruits.push(req.body);
-           await Flight.findByIdAndUpdate(req.params.id, req.body);
-       
-           res.redirect("/flights");
-         } catch (error) {
-           console.log(error);
-         }
- }
+        if (req.body.readyToEat === "on") {
+            //if checked, req.body.readyToEat is set to 'on'
+            req.body.readyToEat = true; //do some data correction
+        } else {
+            //if not checked, req.body.readyToEat is undefined
+            req.body.readyToEat = false; //do some data correction
+        }
+        // fruits.push(req.body);
+        await Passenger.findByIdAndUpdate(req.params.id, req.body);
+
+        res.redirect("/passengers");
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 
@@ -93,9 +85,9 @@ async function deleteFlight(req,res)
 // }
 
 export {
-    seedFlights,
-    getFlights,
-    createFlight,
-    deleteFlight,
-    updateFlight
+    seedPassengers,
+    getPassengers,
+    createPassenger,
+    deletePassenger,
+    updatePassenger
 };
