@@ -5,8 +5,16 @@ import Booking from '../../models/bookings.mjs';
 
 async function seedBookings(req, res) {
     try {
-        const flight = await Flight.findOne();
-        const passenger = await Passenger.findOne();
+        const flight = await Flight.findOne({
+            _id : "680a956ffd0c01dcdef9caaf"
+        })
+        const passenger = await Passenger.findOne({
+            _id : "680aa7237886b165714f97dc"
+        });
+        if (!flight || !passenger) {
+            return res.status(400).json({ message: 'Flight or Passenger not found' });
+          } 
+        
        
         await Booking.deleteMany({});
         await Booking.create(
@@ -19,26 +27,24 @@ async function seedBookings(req, res) {
                 price:850,
                 status:"Confirmed"
             })
-            if (!flight || !passenger) {
-                return res.status(400).json({ message: 'Flight or Passenger not found' });
-              } 
+            
             
         res.status(201).redirect('/bookings');
     }
-        
+
      catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-// async function getFlights(req, res) {
-//     try {
-//         const fruits = await Flight.find({});
-//         res.status(200).json(fruits);
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// }
+async function getBookings(req, res) {
+    try {
+        const bookings = await Booking.find({});
+        res.status(200).json(bookings);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
 
 // async function createFlight(req, res) {
 //     try {
@@ -100,6 +106,6 @@ async function seedBookings(req, res) {
 // // }
 
 export {
-    seedBookings
+    seedBookings,getBookings
     
 };

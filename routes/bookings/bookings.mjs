@@ -16,7 +16,7 @@ router.get('/seed', bookingsController.seedBookings);
 ///// INDUCES /////
 
 // Index
-// router.get('/', flightsController.getFlights);
+router.get('/', bookingsController.getBookings);
 // // New
 // // router.get('/new', fruitsController.renderNewForm);
 // //Delete
