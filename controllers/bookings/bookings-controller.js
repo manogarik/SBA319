@@ -14,8 +14,9 @@ async function seedBookings(req, res) {
                 flightId:flight._id,
                 passengerId : passenger._id,
                 seatNumber:"12A",
-                bookingDate : new Date("25-02-2025"),
+                bookingDate : Date.now(),
                 class:"Economy",
+                price:850,
                 status:"Confirmed"
             })
             if (!flight || !passenger) {
@@ -98,11 +99,7 @@ async function seedBookings(req, res) {
 // //     }
 // // }
 
-// export {
-//     seedFlights,
-//     getFlights,
-//     createFlight,
-//     deleteFlight,
-//     updateFlight,
-//     showFlight
-// };
+export {
+    seedBookings
+    
+};
