@@ -12,12 +12,14 @@ const passengerSchema = new mongoose.Schema({
         type:String,
         lowercase:true,
         match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email address'],
+        unique:true,
         required:true,
     },
     passportNumber : {
         type:String,
         required:true,
         uppercase:true,
+        unique:true,
         match: [/^[A-Z0-9]{6,9}$/, 'Please enter a valid passport number']
     },
     nationality: {
