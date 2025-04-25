@@ -32,6 +32,11 @@ const bookingSchema = new mongoose.Schema({
     {
         type:Number,
         required:true
+    },
+    status:
+    {
+        type:String,
+        enum:['Confirmed','Waiting','Cancelled']
     }
 })
 export default mongoose.model('Booking',bookingSchema);
