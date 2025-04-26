@@ -10,7 +10,8 @@ async function seedPassengers(req, res) {
                 name: "Manogari",
                 email: "manoguru768@gmail.com",
                 passportNumber: "T6334454",
-                nationality: "India"
+                nationality: "India",
+                booking =[]
 
             },
             {
@@ -79,7 +80,10 @@ async function updatePassenger(req, res) {
  {
         try{
             const passenger = await Passenger.findById(req.params.id)
-            res.json(passenger)
+            .populate('bookings');
+            if(!passenger)
+                return res.status(404).json({ message: 'Passenger not found' });
+            res.json(passenger);
         } catch(err) {
             console.log(err)
         }
