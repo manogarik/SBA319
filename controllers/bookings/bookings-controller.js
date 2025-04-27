@@ -31,10 +31,41 @@ async function seedBookings(req, res) {
             
         res.status(201).redirect('/bookings');
     }
-
-     catch (error) {
+    catch(error){
         res.status(400).json({ error: error.message });
     }
+    try{
+        const passenger = await Passenger.findOne({
+            _id : "680c033cf587fbaed991e8f2"
+        });
+        const flight = await Flight.findOne({
+            _id : "680c098cf587fbaed991e908"
+        })
+        if (!passenger || !flight) {
+            return res.status(400).json({ message: 'Passenger or Flight not found' });
+          } 
+          for(let i = 0; i< 3;i++)
+          {
+            await Booking.create(
+                {
+                    flightId:flight._id,
+                    passengerId : passenger._id,
+                    seatNumber:"12A",
+                    bookingDate : Date.now(),
+                    class:"Economy",
+                    price:1000,
+                    status:"Confirmed"
+                })
+                
+          }
+          res.status(201).redirect('/bookings');
+    }
+    catch(error){
+        res.status(400).json({ error: error.message });
+    }
+    
+
+     
 }
 
 async function getBookings(req, res) {
@@ -46,16 +77,16 @@ async function getBookings(req, res) {
     }
 }
 
-// async function createFlight(req, res) {
-//     try {
-//         req.body.readyToEat === 'on' ? req.body.readyToEat = true : req.body.readyToEat = false;
-//         const flight = await Flight.create(req.body);
-//         console.log(flight);
-//         res.status(201).json(flight);
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// }
+async function createBooking(req, res) {
+    try {
+        req.body.readyToEat === 'on' ? req.body.readyToEat = true : req.body.readyToEat = false;
+        const flight = await Flight.create(req.body);
+        console.log(flight);
+        res.status(201).json(flight);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
 
 // async function deleteFlight(req,res)
 // {
@@ -106,6 +137,6 @@ async function getBookings(req, res) {
 // // }
 
 export {
-    seedBookings,getBookings
+    seedBookings,getBookings,createBooking
     
 };

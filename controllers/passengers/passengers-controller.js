@@ -1,8 +1,10 @@
 import Passenger from '../../models/passengers.mjs';
-
+import Booking from '../../models/bookings.mjs';
+import mongoose from 'mongoose';
 
 async function seedPassengers(req, res) {
     try {
+        
         await Passenger.deleteMany({});
         await Passenger.create(
             {
@@ -11,7 +13,7 @@ async function seedPassengers(req, res) {
                 email: "manoguru768@gmail.com",
                 passportNumber: "T6334454",
                 nationality: "India",
-                booking =[]
+                
 
             },
             {
@@ -68,7 +70,9 @@ async function updatePassenger(req, res) {
         }
         // fruits.push(req.body);
         await Passenger.findByIdAndUpdate(req.params.id, req.body);
-
+        // await Passenger.findByIdAndUpdate(req.params.id, {
+        //     $push: { bookings:mongoose.Schema.Types.ObjectId}
+        //   });
         res.redirect("/passengers");
     } catch (error) {
         console.log(error);
@@ -80,7 +84,7 @@ async function updatePassenger(req, res) {
  {
         try{
             const passenger = await Passenger.findById(req.params.id)
-            .populate('bookings');
+            //.populate('bookings');
             if(!passenger)
                 return res.status(404).json({ message: 'Passenger not found' });
             res.json(passenger);

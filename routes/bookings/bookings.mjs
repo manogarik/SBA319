@@ -24,7 +24,7 @@ router.get('/', bookingsController.getBookings);
 // // Update
 // router.patch('/:id', flightsController.updateFlight);
 // // Create
-// router.post('/', flightsController.createFlight);
+router.post('/', bookingsController.createBooking);
 // // Edit
 // // Show
 // router.get('/:id',flightsController.showFlight);
