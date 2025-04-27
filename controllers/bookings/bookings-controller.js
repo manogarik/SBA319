@@ -28,7 +28,7 @@ async function seedBookings(req, res) {
                 status:"Confirmed"
             })
             
-            
+        
         res.status(201).redirect('/bookings');
     }
     catch(error){
@@ -44,7 +44,7 @@ async function seedBookings(req, res) {
         if (!passenger || !flight) {
             return res.status(400).json({ message: 'Passenger or Flight not found' });
           } 
-          for(let i = 0; i< 3;i++)
+          for(let i = 0; i< 4;i++)
           {
             await Booking.create(
                 {
